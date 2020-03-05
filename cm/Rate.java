@@ -94,8 +94,72 @@ public class Rate {
     public BigDecimal calculate(Period periodStay) {
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
-        return (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
+
+        BigDecimal calculation = new BigDecimal(0);//new code
+        BigDecimal newCalculation = new BigDecimal(0);//new code
+
+        calculation = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
                 this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
+
+        // new code from here
+        if(kind == CarParkKind.STAFF)
+        {
+            if(calculation.compareTo(new BigDecimal(16)) < 1 )
+            {
+                return calculation;
+            }
+            else
+            {
+                return new BigDecimal(16);
+            }
+        }
+
+        if(kind == CarParkKind.STUDENT)
+        {
+            if(calculation.compareTo(new BigDecimal(5.5)) <= 1 )
+            {
+                return calculation;
+            }
+            else
+            {
+                newCalculation = calculation.subtract(new BigDecimal(5.5));
+                return newCalculation;
+            }
+        }
+
+        if(kind == CarParkKind.MANAGEMENT)
+        {
+            if(calculation.compareTo(new BigDecimal(5.5)) <= 1 )
+            {
+                return calculation;
+            }
+            else
+            {
+                BigDecimal reducedAmount =  calculation.subtract(new BigDecimal(5.5)).divide(new BigDecimal(4));
+                newCalculation = calculation.subtract(reducedAmount.add(new BigDecimal(5.5)));
+                return newCalculation;
+            }
+        }
+
+        if(kind == CarParkKind.VISITOR)
+        {
+            if(calculation.compareTo(new BigDecimal(8.0)) <= 1 )
+            {
+                return new BigDecimal(0);
+            }
+            else
+            {
+                newCalculation = (calculation.subtract((new BigDecimal(8.0)))).divide(new BigDecimal(2.0));
+                return newCalculation;
+            }
+        }
+
+        return newCalculation;
+
+
+
+
+
     }
 
 }
