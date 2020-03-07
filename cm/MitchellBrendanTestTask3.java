@@ -417,7 +417,7 @@ public class MitchellBrendanTestTask3
         reducedPeriod.add(second);
 
 
-        CarParkKind kind= CarParkKind.STUDENT;
+        CarParkKind kind= CarParkKind.STAFF;
         BigDecimal normalRate = new BigDecimal(4),reducedRate = new BigDecimal(2);
 
         Rate rate = new Rate(kind,normalRate,reducedRate,reducedPeriod,normalPeriod);
@@ -493,27 +493,6 @@ public class MitchellBrendanTestTask3
     }
 
 
-    @org.junit.Test
-    public void calculateStudent() throws Exception {
-        Period a,b ;
-        Period first = new Period(7,18);
-        Period second = new Period(19,23);
-        ArrayList<Period> normalPeriod = new ArrayList<Period>() ,reducedPeriod = new ArrayList<Period>();
-        normalPeriod.add(first);
-        reducedPeriod.add(second);
-
-
-        CarParkKind kind= CarParkKind.STUDENT;
-        BigDecimal normalRate = new BigDecimal(4),reducedRate = new BigDecimal(2);
-
-        Rate rate = new Rate(kind,normalRate,reducedRate,reducedPeriod,normalPeriod);
-        BigDecimal expectedResult = new BigDecimal(28.375);
-        assertEquals(expectedResult,rate.calculate(new Period(8,16)));
-
-
-
-    }
-
 
 
     @org.junit.Test
@@ -538,6 +517,27 @@ public class MitchellBrendanTestTask3
     }
 
     @org.junit.Test
+    public void calculateStudent() throws Exception {
+        Period a,b ;
+        Period first = new Period(7,18);
+        Period second = new Period(19,23);
+        ArrayList<Period> normalPeriod = new ArrayList<Period>() ,reducedPeriod = new ArrayList<Period>();
+        normalPeriod.add(first);
+        reducedPeriod.add(second);
+
+
+        CarParkKind kind= CarParkKind.STUDENT;
+        BigDecimal normalRate = new BigDecimal(4),reducedRate = new BigDecimal(2);
+
+        Rate rate = new Rate(kind,normalRate,reducedRate,reducedPeriod,normalPeriod);
+        BigDecimal expectedResult = new BigDecimal(5.875);
+        assertEquals(expectedResult,rate.calculate(new Period(20,23)));
+
+
+
+    }
+
+    @org.junit.Test
     public void calculateVisitor() throws Exception {
         Period a,b ;
         Period first = new Period(7,18);
@@ -552,7 +552,7 @@ public class MitchellBrendanTestTask3
 
         Rate rate = new Rate(kind,normalRate,reducedRate,reducedPeriod,normalPeriod);
         BigDecimal expectedResult = new BigDecimal(2);
-        assertEquals(expectedResult,rate.calculate(new Period(20,22)));
+        assertEquals(expectedResult,rate.calculate(new Period(8,10)));
 
 
 

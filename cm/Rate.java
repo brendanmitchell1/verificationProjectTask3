@@ -102,7 +102,7 @@ public class Rate {
                 this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
 
         // new code from here
-        if(kind == CarParkKind.STAFF)
+        if(this.kind == CarParkKind.STAFF)
         {
             if(calculation.compareTo(new BigDecimal(16)) < 1 )
             {
@@ -114,7 +114,7 @@ public class Rate {
             }
         }
 
-        if(kind == CarParkKind.MANAGEMENT)
+        if(this.kind == CarParkKind.MANAGEMENT)
         {
             if(calculation.compareTo(new BigDecimal(3.0)) < 1 )
             {
@@ -127,29 +127,36 @@ public class Rate {
             }
         }
 
-        if(kind == CarParkKind.STUDENT )
-        {
-            if(calculation.compareTo(new BigDecimal(5.5)) <= 1)
-            {
-                return calculation;
-            }
-            else
-            {
-                BigDecimal reducedAmount =  calculation.subtract(new BigDecimal(5.5)).divide(new BigDecimal(4));
-                newCalculation = calculation.subtract(reducedAmount.add(new BigDecimal(5.5)));
-                return newCalculation;
-            }
-        }
 
-        if(kind == CarParkKind.VISITOR)
-        {
-            if(calculation.compareTo(new BigDecimal(8.0))<=1)
+        if(this.kind == CarParkKind.VISITOR) {
+            if(calculation.compareTo(new BigDecimal("8.0"))>0)
             {
                 return new BigDecimal(0);
             }
             else
             {
-                return new BigDecimal(1);
+                newCalculation = calculation.subtract(new BigDecimal("8.0"));
+                newCalculation = newCalculation.multiply(new BigDecimal("0.5"));
+
+                 return newCalculation;
+            }
+
+        }
+
+        if(this.kind == CarParkKind.STUDENT)
+        {
+            if(calculation.compareTo(new BigDecimal(5.5)) < 1 )
+            {
+                return calculation;
+            }
+            else
+            {
+               newCalculation = calculation.subtract(new BigDecimal(5.5));
+               newCalculation = newCalculation.multiply(new BigDecimal(.75));
+               newCalculation = newCalculation.add(new BigDecimal(5.5));
+
+               return newCalculation;
+
             }
         }
 
