@@ -128,17 +128,22 @@ public class Rate {
         }
 
 
-        if(this.kind == CarParkKind.VISITOR) {
-            if(calculation.compareTo(new BigDecimal("8.0"))>0)
+        if(this.kind == CarParkKind.VISITOR)
+        {
+
+
+            if(calculation.compareTo(new BigDecimal(8))==1)
             {
-                return new BigDecimal(0);
+
+                newCalculation = calculation.subtract(new BigDecimal(8));
+                newCalculation = newCalculation.divide(new BigDecimal(2));
+
+                return newCalculation;
+
             }
             else
             {
-                newCalculation = calculation.subtract(new BigDecimal("8.0"));
-                newCalculation = newCalculation.multiply(new BigDecimal("0.5"));
-
-                 return newCalculation;
+                return new BigDecimal(0);
             }
 
         }

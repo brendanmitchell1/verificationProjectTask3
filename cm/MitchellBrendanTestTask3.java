@@ -547,12 +547,12 @@ public class MitchellBrendanTestTask3
         reducedPeriod.add(second);
 
 
-        CarParkKind kind= CarParkKind.VISITOR;
+        CarParkKind kind = CarParkKind.VISITOR;
         BigDecimal normalRate = new BigDecimal(4),reducedRate = new BigDecimal(2);
 
         Rate rate = new Rate(kind,normalRate,reducedRate,reducedPeriod,normalPeriod);
-        BigDecimal expectedResult = new BigDecimal(2);
-        assertEquals(expectedResult,rate.calculate(new Period(8,10)));
+        BigDecimal expectedResult = new BigDecimal(6);
+        assertEquals(expectedResult,rate.calculate(new Period(8,13)));
 
 
 
