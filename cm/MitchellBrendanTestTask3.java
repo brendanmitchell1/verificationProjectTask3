@@ -1,14 +1,14 @@
 package cm;
 
-        import org.junit.Test;
+import org.junit.Test;
 
-        import static org.junit.Assert.*;
+import static org.junit.Assert.*;
 
-        import java.math.BigDecimal;
-        import java.util.ArrayList;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 
 
-public class MitchellBrendanTestTask2
+public class MitchellBrendanTestTask3
 {
 
     @org.junit.Test(expected = IllegalArgumentException.class)
@@ -438,11 +438,11 @@ public class MitchellBrendanTestTask2
         reducedPeriod.add(second);
 
 
-        CarParkKind kind= CarParkKind.STAFF;
+        CarParkKind kind= CarParkKind.MANAGEMENT;
         BigDecimal normalRate = new BigDecimal(4),reducedRate = new BigDecimal(2);
 
         Rate rate = new Rate(kind,normalRate,reducedRate,reducedPeriod,normalPeriod);
-        BigDecimal expectedResult = new BigDecimal(2);
+        BigDecimal expectedResult = new BigDecimal(3);
         assertEquals(expectedResult,rate.calculate(new Period(18,20)));
 
 
@@ -459,7 +459,7 @@ public class MitchellBrendanTestTask2
         reducedPeriod.add(second);
 
 
-        CarParkKind kind= CarParkKind.VISITOR;
+        CarParkKind kind= CarParkKind.STAFF;
         BigDecimal normalRate = new BigDecimal(4),reducedRate = new BigDecimal(2);
 
         Rate rate = new Rate(kind,normalRate,reducedRate,reducedPeriod,normalPeriod);
@@ -470,8 +470,94 @@ public class MitchellBrendanTestTask2
 
     }
 
+    //new test for task 3
+    @org.junit.Test
+    public void calculateStaff() throws Exception {
+        Period a,b ;
+        Period first = new Period(7,18);
+        Period second = new Period(19,23);
+        ArrayList<Period> normalPeriod = new ArrayList<Period>() ,reducedPeriod = new ArrayList<Period>();
+        normalPeriod.add(first);
+        reducedPeriod.add(second);
 
 
+        CarParkKind kind= CarParkKind.STAFF;
+        BigDecimal normalRate = new BigDecimal(4),reducedRate = new BigDecimal(2);
+
+        Rate rate = new Rate(kind,normalRate,reducedRate,reducedPeriod,normalPeriod);
+        BigDecimal expectedResult = new BigDecimal(16);
+        assertEquals(expectedResult,rate.calculate(new Period(8,16)));
+
+
+
+    }
+
+
+    @org.junit.Test
+    public void calculateStudent() throws Exception {
+        Period a,b ;
+        Period first = new Period(7,18);
+        Period second = new Period(19,23);
+        ArrayList<Period> normalPeriod = new ArrayList<Period>() ,reducedPeriod = new ArrayList<Period>();
+        normalPeriod.add(first);
+        reducedPeriod.add(second);
+
+
+        CarParkKind kind= CarParkKind.STUDENT;
+        BigDecimal normalRate = new BigDecimal(4),reducedRate = new BigDecimal(2);
+
+        Rate rate = new Rate(kind,normalRate,reducedRate,reducedPeriod,normalPeriod);
+        BigDecimal expectedResult = new BigDecimal(28.375);
+        assertEquals(expectedResult,rate.calculate(new Period(8,16)));
+
+
+
+    }
+
+
+
+    @org.junit.Test
+    public void calculateManagement() throws Exception {
+        Period a,b ;
+        Period first = new Period(7,18);
+        Period second = new Period(19,23);
+        ArrayList<Period> normalPeriod = new ArrayList<Period>() ,reducedPeriod = new ArrayList<Period>();
+        normalPeriod.add(first);
+        reducedPeriod.add(second);
+
+
+        CarParkKind kind= CarParkKind.MANAGEMENT;
+        BigDecimal normalRate = new BigDecimal(4),reducedRate = new BigDecimal(1);
+
+        Rate rate = new Rate(kind,normalRate,reducedRate,reducedPeriod,normalPeriod);
+        BigDecimal expectedResult = new BigDecimal(3);
+        assertEquals(expectedResult,rate.calculate(new Period(20,21)));
+
+
+
+    }
+
+    @org.junit.Test
+    public void calculateVisitor() throws Exception {
+        Period a,b ;
+        Period first = new Period(7,18);
+        Period second = new Period(19,23);
+        ArrayList<Period> normalPeriod = new ArrayList<Period>() ,reducedPeriod = new ArrayList<Period>();
+        normalPeriod.add(first);
+        reducedPeriod.add(second);
+
+
+        CarParkKind kind= CarParkKind.VISITOR;
+        BigDecimal normalRate = new BigDecimal(4),reducedRate = new BigDecimal(2);
+
+        Rate rate = new Rate(kind,normalRate,reducedRate,reducedPeriod,normalPeriod);
+        BigDecimal expectedResult = new BigDecimal(2);
+        assertEquals(expectedResult,rate.calculate(new Period(20,22)));
+
+
+
+    }
 
 }
+
 

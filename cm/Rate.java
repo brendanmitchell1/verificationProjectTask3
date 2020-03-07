@@ -114,22 +114,22 @@ public class Rate {
             }
         }
 
-        if(kind == CarParkKind.STUDENT)
+        if(kind == CarParkKind.MANAGEMENT)
         {
-            if(calculation.compareTo(new BigDecimal(5.5)) <= 1 )
+            if(calculation.compareTo(new BigDecimal(3.0)) < 1 )
             {
-                return calculation;
+                return new BigDecimal(3);
             }
             else
             {
-                newCalculation = calculation.subtract(new BigDecimal(5.5));
-                return newCalculation;
+
+                return calculation;
             }
         }
 
-        if(kind == CarParkKind.MANAGEMENT)
+        if(kind == CarParkKind.STUDENT )
         {
-            if(calculation.compareTo(new BigDecimal(5.5)) <= 1 )
+            if(calculation.compareTo(new BigDecimal(5.5)) <= 1)
             {
                 return calculation;
             }
@@ -143,14 +143,13 @@ public class Rate {
 
         if(kind == CarParkKind.VISITOR)
         {
-            if(calculation.compareTo(new BigDecimal(8.0)) <= 1 )
+            if(calculation.compareTo(new BigDecimal(8.0))<=1)
             {
                 return new BigDecimal(0);
             }
             else
             {
-                newCalculation = (calculation.subtract((new BigDecimal(8.0)))).divide(new BigDecimal(2.0));
-                return newCalculation;
+                return new BigDecimal(1);
             }
         }
 
