@@ -138,7 +138,7 @@ public class Rate {
                 newCalculation = calculation.subtract(new BigDecimal(8));
                 newCalculation = newCalculation.divide(new BigDecimal(2));
 
-                return newCalculation;
+                //return newCalculation;
 
             }
             else
@@ -160,7 +160,7 @@ public class Rate {
                newCalculation = newCalculation.multiply(new BigDecimal(.75));
                newCalculation = newCalculation.add(new BigDecimal(5.5));
 
-               return newCalculation;
+               //return newCalculation;
 
             }
         }
