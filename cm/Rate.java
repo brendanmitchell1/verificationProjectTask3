@@ -3,7 +3,6 @@ package cm;
         import java.math.BigDecimal;
         import java.util.ArrayList;
         import java.util.List;
-
 /**
  * Created by CM on 01/02/2018.
  */
@@ -13,6 +12,9 @@ public class Rate {
     private BigDecimal hourlyReducedRate;
     private ArrayList<Period> reduced = new ArrayList<>();
     private ArrayList<Period> normal = new ArrayList<>();
+    private Irate staff = new Staff();
+    private Irate student = new Student();
+    private Irate visitor = new Visitor();
 
     public Rate(CarParkKind kind, BigDecimal normalRate, BigDecimal reducedRate, ArrayList<Period> reducedPeriods
             , ArrayList<Period> normalPeriods) {
@@ -104,73 +106,76 @@ public class Rate {
         // new code from here
         if(this.kind == CarParkKind.STAFF)
         {
-            if(calculation.compareTo(new BigDecimal(16)) < 1 )
-            {
-                return calculation;
-            }
-            else
-            {
-                return new BigDecimal(16);
-            }
+//            if(calculation.compareTo(new BigDecimal(16)) < 1 )
+//            {
+//                return calculation;
+//            }
+//            else
+//            {
+//                return new BigDecimal(16);
+//            }
+            newCalculation = staff.calculation(calculation);
+
         }
 
         if(this.kind == CarParkKind.MANAGEMENT)
         {
-            if(calculation.compareTo(new BigDecimal(3.0)) < 1 )
-            {
-                return new BigDecimal(3);
-            }
-            else
-            {
-
-                return calculation;
-            }
+//            if(calculation.compareTo(new BigDecimal(3.0)) < 1 )
+//            {
+//                return new BigDecimal(3);
+//            }
+//            else
+//            {
+//
+//                return calculation;
+//            }
+            newCalculation = staff.calculation(calculation);
         }
 
-
+//
         if(this.kind == CarParkKind.VISITOR)
         {
-
-
-            if(calculation.compareTo(new BigDecimal(8))==1)
-            {
-
-                newCalculation = calculation.subtract(new BigDecimal(8));
-                newCalculation = newCalculation.divide(new BigDecimal(2));
-
-                //return newCalculation;
-
-            }
-            else
-            {
-                return new BigDecimal(0);
-            }
-
+//
+//
+//            if(calculation.compareTo(new BigDecimal(8))==1)
+//            {
+//
+//                newCalculation = calculation.subtract(new BigDecimal(8));
+//                newCalculation = newCalculation.divide(new BigDecimal(2));
+//
+//                //return newCalculation;
+//
+//            }
+//            else
+//            {
+//                return new BigDecimal(0);
+//            }
+//            newCalculation = staff.calculation(calculation);
         }
-
+//
         if(this.kind == CarParkKind.STUDENT)
         {
-            if(calculation.compareTo(new BigDecimal(5.5)) < 1 )
-            {
-                return calculation;
-            }
-            else
-            {
-               newCalculation = calculation.subtract(new BigDecimal(5.5));
-               newCalculation = newCalculation.multiply(new BigDecimal(.75));
-               newCalculation = newCalculation.add(new BigDecimal(5.5));
+//            if(calculation.compareTo(new BigDecimal(5.5)) < 1 )
+//            {
+//                return calculation;
+//            }
+//            else
+//            {
+//               newCalculation = calculation.subtract(new BigDecimal(5.5));
+//               newCalculation = newCalculation.multiply(new BigDecimal(.75));
+//               newCalculation = newCalculation.add(new BigDecimal(5.5));
+//
+//               //return newCalculation;
+//
+//            }
 
-               //return newCalculation;
-
-            }
+            newCalculation = visitor.calculation(calculation);
         }
 
+
+
+//
         return newCalculation;
-
-
-
-
-
     }
 
 }

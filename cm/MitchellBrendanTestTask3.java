@@ -442,7 +442,7 @@ public class MitchellBrendanTestTask3
         BigDecimal normalRate = new BigDecimal(4),reducedRate = new BigDecimal(2);
 
         Rate rate = new Rate(kind,normalRate,reducedRate,reducedPeriod,normalPeriod);
-        BigDecimal expectedResult = new BigDecimal(3);
+        BigDecimal expectedResult = new BigDecimal(2);
         assertEquals(expectedResult,rate.calculate(new Period(18,20)));
 
 
