@@ -150,7 +150,7 @@ public class Rate {
 //            {
 //                return new BigDecimal(0);
 //            }
-//            newCalculation = staff.calculation(calculation);
+            newCalculation = visitor.calculation(calculation);
         }
 //
         if(this.kind == CarParkKind.STUDENT)
@@ -169,7 +169,7 @@ public class Rate {
 //
 //            }
 
-            newCalculation = visitor.calculation(calculation);
+            newCalculation = student.calculation(calculation);
         }
 
 
