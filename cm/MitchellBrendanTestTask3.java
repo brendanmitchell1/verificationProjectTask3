@@ -538,7 +538,7 @@ public class MitchellBrendanTestTask3
     }
 
     @org.junit.Test
-    public void calculateStudent2() throws Exception {
+    public void calculateStudentLessThanFivePointFive() throws Exception {
         Period a,b ;
         Period first = new Period(7,18);
         Period second = new Period(19,23);
@@ -581,7 +581,7 @@ public class MitchellBrendanTestTask3
     }
 
     @org.junit.Test
-    public void calculateVisitor2() throws Exception {
+    public void calculateVisitorLessThanEight() throws Exception {
         Period a,b ;
         Period first = new Period(7,18);
         Period second = new Period(19,23);
