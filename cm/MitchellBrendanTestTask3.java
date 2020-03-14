@@ -601,6 +601,27 @@ public class MitchellBrendanTestTask3
 
     }
 
+    @org.junit.Test
+    public void normalAndReducedRateEqual() throws Exception {
+        Period a,b ;
+        Period first = new Period(7,18);
+        Period second = new Period(19,23);
+        ArrayList<Period> normalPeriod = new ArrayList<Period>() ,reducedPeriod = new ArrayList<Period>();
+        normalPeriod.add(first);
+        reducedPeriod.add(second);
+
+
+        CarParkKind kind = CarParkKind.VISITOR;
+        BigDecimal normalRate = new BigDecimal(2),reducedRate = new BigDecimal(2);
+
+        Rate rate = new Rate(kind,normalRate,reducedRate,reducedPeriod,normalPeriod);
+        BigDecimal expectedResult = new BigDecimal(0);
+        assertEquals(expectedResult,rate.calculate(new Period(7,8)));
+
+
+
+    }
+
 }
 
 
